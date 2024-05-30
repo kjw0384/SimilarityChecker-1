@@ -1,11 +1,12 @@
 #include "pch.h"
 #include "../Project12/SimilarityChecker.cpp"
-#include <vector>
 #include <string>
 
 using namespace std;
 
 TEST(SplitAndSumApplicationTest, split) {
-	EXPECT_EQ(1, 1);
+	SimilarityChecker sc;
+	int nScore = sc.checkLength("ASD", "DSA");
+	EXPECT_EQ(nScore, 60);
 }
 

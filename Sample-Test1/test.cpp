@@ -16,3 +16,9 @@ TEST(SimilarityCheckerTest, alphaAllDiff) {
 	int nScore = sc.getAlphaScore("A", "BB");
 	EXPECT_EQ(nScore, 0);
 }
+
+TEST(SimilarityCheckerTest, alphaDiffSome) {
+	SimilarityChecker sc;
+	int nScore = sc.getAlphaScore("AA", "AAE");
+	EXPECT_EQ(nScore, 32);
+}

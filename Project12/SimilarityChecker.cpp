@@ -6,28 +6,23 @@ using namespace std;
 class SimilarityChecker {
 public:
 	int getAlphaScore(const string input1, const string input2) {
-		
-		int totalCnt = input1.length() + input2.length();
+		set<char> set1(input1.begin(), input1.end());
+		set<char> set2(input2.begin(), input2.end());
+		int totalCnt = set1.size() + set2.size();
 		int sameCnt = 0;
 		
-		sameCnt += getIncludeAlphabetCnt(input1, input2);
-		sameCnt += getIncludeAlphabetCnt(input2, input1);
+		sameCnt += getIncludeAlphabetCnt(set1, set2);
+		sameCnt += getIncludeAlphabetCnt(set2, set1);
 
 		return sameCnt * 40 / totalCnt;
 	}
 
-	int getIncludeAlphabetCnt(const string inputstr, const string refstr)
+	int getIncludeAlphabetCnt(const set<char> set1, const set<char> set2)
 	{
 		int sameCnt = 0;
-		for (int inputStrIdx = 0; inputStrIdx < inputstr.length(); inputStrIdx++)
-		{
-			for (int refStrIdx = 0; refStrIdx < refstr.length(); refStrIdx++)
-			{
-				if (inputstr[inputStrIdx] == refstr[refStrIdx])
-				{
-					sameCnt++;
-					break;
-				}
+		for (const char& c : set1) {
+			if (set2.find(c) != set2.end()) {
+				sameCnt++;
 			}
 		}
 		return sameCnt;

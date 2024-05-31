@@ -12,6 +12,10 @@ public:
 	{
 		EXPECT_EQ(sc.getLengthScore(str1, str2), expectedScore);
 	}
+	void checkAlphabetScore(const string str1, const string str2, int expectedScore)
+	{
+		EXPECT_EQ(sc.getAlphaScore(str1, str2), expectedScore);
+	}
 };
 
 TEST_F(SimilarityCheckerFixture, lengthSame) {
@@ -30,20 +34,14 @@ TEST_F(SimilarityCheckerFixture, lengthLT2Length2) {
 	checkLengthScore("AA", "AAE", 30);
 }
 
-TEST(SimilarityCheckerTest, alphaEqual) {
-	SimilarityChecker sc;
-	int nScore = sc.getAlphaScore("ASD", "DSA");
-	EXPECT_EQ(nScore, 40);
+TEST_F(SimilarityCheckerFixture, alphaEqual) {
+	checkAlphabetScore("ASD", "DSA", 40);
 }
 
-TEST(SimilarityCheckerTest, alphaAllDiff) {
-	SimilarityChecker sc;
-	int nScore = sc.getAlphaScore("A", "BB");
-	EXPECT_EQ(nScore, 0);
+TEST_F(SimilarityCheckerFixture, alphaAllDiff) {
+	checkAlphabetScore("A", "BB", 0);
 }
 
-TEST(SimilarityCheckerTest, alphaDiffSome) {
-	SimilarityChecker sc;
-	int nScore = sc.getAlphaScore("AA", "AAE");
-	EXPECT_EQ(nScore, 2 * 40 / 3);
+TEST_F(SimilarityCheckerFixture, alphaDiffSome) {
+	checkAlphabetScore("AA", "AAE", 2 * 40 / 3);
 }

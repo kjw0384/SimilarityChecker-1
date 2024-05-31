@@ -5,18 +5,19 @@ using namespace std;
 class SimilarityChecker {
 public:
 	int getLengthScore(const string input1, const string input2) {
-		if (input1.length() == input2.length())
+		int length1 = input1.length();
+		int length2 = input2.length();
+
+		if (length1 == length2)
 			return 60;
-		else if (input1.length() >= 2 * input2.length() ||
-			input2.length() >= 2 * input1.length())
+		else if (length1 >= 2 * length2 ||
+			length2 >= 2 * length1)
 			return 0;
 		else {
-			int A = 0;
-			int B = 0;
-			A = (input1.length() > input2.length()) ? input1.length() : input2.length();
-			B = (input1.length() > input2.length()) ? input2.length() : input1.length();
+			double A = (length1 > length2) ? length1 : length2;
+			double B = (length1 > length2) ? length2 : length1;
 			double Gap = A - B;
-			return (int)((1 - ((double)Gap / B)) * 60);
+			return (int)((1 - (Gap / B)) * 60);
 		}
 		return 0;
 	}

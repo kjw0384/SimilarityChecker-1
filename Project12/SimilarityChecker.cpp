@@ -10,32 +10,28 @@ public:
 		int totalCnt = input1.length() + input2.length();
 		int sameCnt = 0;
 		
-		for (int i = 0; i < input1.length(); i++)
-		{
-			for (int j = 0; j < input2.length(); j++)
-			{
-				if (input1[i] == input2[j])
-				{
-					sameCnt++;
-					break;
-				}
-			}
-		}
-
-		for (int i = 0; i < input2.length(); i++)
-		{
-			for (int j = 0; j < input1.length(); j++)
-			{
-				if (input2[i] == input1[j])
-				{
-					sameCnt++;
-					break;
-				}
-			}
-		}
+		sameCnt += getIncludeAlphabetCnt(input1, input2);
+		sameCnt += getIncludeAlphabetCnt(input2, input1);
 
 		return sameCnt * 40 / totalCnt;
 
 		return 40;
+	}
+
+	int getIncludeAlphabetCnt(const string inputstr, const string refstr)
+	{
+		int sameCnt = 0;
+		for (int inputStrIdx = 0; inputStrIdx < inputstr.length(); inputStrIdx++)
+		{
+			for (int refStrIdx = 0; refStrIdx < refstr.length(); refStrIdx++)
+			{
+				if (inputstr[inputStrIdx] == refstr[refStrIdx])
+				{
+					sameCnt++;
+					break;
+				}
+			}
+		}
+		return sameCnt;
 	}
 };

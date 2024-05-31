@@ -14,8 +14,6 @@ public:
 		sameCnt += getIncludeAlphabetCnt(input2, input1);
 
 		return sameCnt * 40 / totalCnt;
-
-		return 40;
 	}
 
 	int getIncludeAlphabetCnt(const string inputstr, const string refstr)

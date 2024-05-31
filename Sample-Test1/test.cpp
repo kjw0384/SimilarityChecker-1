@@ -5,7 +5,9 @@
 
 using namespace std;
 
-TEST(SplitAndSumApplicationTest, split) {
-	EXPECT_EQ(1, 1);
+TEST(SimilarityCheckerTest, alphaequal) {
+	SimilarityChecker sc;
+	int nScore = sc.getAlphaScore("ASD", "DSA");
+	EXPECT_EQ(nScore, 40);
 }
 

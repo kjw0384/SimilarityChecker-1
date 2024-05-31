@@ -21,3 +21,9 @@ TEST(SimilarityCheckerTest, lengthLT2Length1) {
 	int nScore = sc.getLengthScore("AAABB", "BBA");
 	EXPECT_EQ(nScore, 20);
 }
+
+TEST(SimilarityCheckerTest, lengthLT2Length2) {
+	SimilarityChecker sc;
+	int nScore = sc.getLengthScore("AA", "AAE");
+	EXPECT_EQ(nScore, 30);
+}

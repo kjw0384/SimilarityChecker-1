@@ -11,3 +11,8 @@ TEST(SimilarityCheckerTest, alphaEqual) {
 	EXPECT_EQ(nScore, 40);
 }
 
+TEST(SimilarityCheckerTest, alphaAllDiff) {
+	SimilarityChecker sc;
+	int nScore = sc.getAlphaScore("A", "BB");
+	EXPECT_EQ(nScore, 0);
+}

@@ -4,26 +4,28 @@
 
 using namespace std;
 
-TEST(SimilarityCheckerTest, lengthSame) {
+class SimilarityCheckerFixture : public testing::Test{
+public:
 	SimilarityChecker sc;
-	int nScore = sc.getLengthScore("ASD", "DSA");
-	EXPECT_EQ(nScore, 60);
+
+	void checkLengthScore(const string str1, const string str2, int expectedScore)
+	{
+		EXPECT_EQ(sc.getLengthScore(str1, str2), expectedScore);
+	}
+};
+
+TEST_F(SimilarityCheckerFixture, lengthSame) {
+	checkLengthScore("ASD", "DSA", 60);
 }
 
-TEST(SimilarityCheckerTest, lengthGE2Legnth) {
-	SimilarityChecker sc;
-	int nScore = sc.getLengthScore("A", "BB");
-	EXPECT_EQ(nScore, 0);
+TEST_F(SimilarityCheckerFixture, lengthGE2Legnth) {
+	checkLengthScore("A", "BB", 0);
 }
 
-TEST(SimilarityCheckerTest, lengthLT2Length1) {
-	SimilarityChecker sc;
-	int nScore = sc.getLengthScore("AAABB", "BBA");
-	EXPECT_EQ(nScore, 20);
+TEST_F(SimilarityCheckerFixture, lengthLT2Length1) {
+	checkLengthScore("AAABB", "BBA", 20);
 }
 
-TEST(SimilarityCheckerTest, lengthLT2Length2) {
-	SimilarityChecker sc;
-	int nScore = sc.getLengthScore("AA", "AAE");
-	EXPECT_EQ(nScore, 30);
+TEST_F(SimilarityCheckerFixture, lengthLT2Length2) {
+	checkLengthScore("AA", "AAE", 30);
 }

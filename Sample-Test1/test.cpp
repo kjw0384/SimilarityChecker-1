@@ -4,9 +4,9 @@
 
 using namespace std;
 
-TEST(SplitAndSumApplicationTest, split) {
+TEST(SimilarityCheckerTest, samelength) {
 	SimilarityChecker sc;
-	int nScore = sc.checkLength("ASD", "DSA");
+	int nScore = sc.getLengthScore("ASD", "DSA");
 	EXPECT_EQ(nScore, 60);
 }
 

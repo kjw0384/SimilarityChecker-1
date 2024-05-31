@@ -5,7 +5,7 @@
 
 using namespace std;
 
-TEST(SimilarityCheckerTest, alphaequal) {
+TEST(SimilarityCheckerTest, alphaEqual) {
 	SimilarityChecker sc;
 	int nScore = sc.getAlphaScore("ASD", "DSA");
 	EXPECT_EQ(nScore, 40);
